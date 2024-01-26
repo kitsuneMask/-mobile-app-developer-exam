@@ -1,0 +1,7 @@
+{
+  "name": "mobile-app-developer-exam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
