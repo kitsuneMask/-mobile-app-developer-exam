@@ -13,7 +13,7 @@ HOW TO INSTALL
 
 */ MESSAGE /*
 
-Dear [Recipient's Name],
+Dear Ma'am / Sir,
 
 I hope this message finds you well. I regret to inform you that due to a health issue – a severe case of diarrhea lasting for the past two and a half days – I was unable to complete the job application exam on time.
 
