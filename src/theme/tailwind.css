@@ -1,0 +1,105 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer utilities {
+
+    .nav-buttons {
+
+        @apply 
+        
+            mt-5
+            font-semibold
+        
+        ;
+
+    }
+
+    .nav-buttons.active {
+
+        color : theme( "colors.red.500" );
+
+    }
+
+    .nav-buttons-icons {
+
+        @apply 
+        
+            inline-block
+            h-[24px]
+            w-[24px]
+            mr-5
+            bg-no-repeat
+            bg-center
+            bg-cover
+        
+        ;
+
+    }
+
+    .quick-filter-buttons {
+
+        @apply 
+        
+            bg-gray-200
+            rounded-xl
+            px-5
+            py-2.5
+            text-gray-400
+            font-bold
+            text-nowrap
+        
+        ;
+
+    }
+
+    .quick-filter-buttons.active {
+
+        background: theme( "colors.red.500" );
+        color: white;
+
+    }
+
+    .quantity-buttons {
+
+        @apply 
+        
+            box-content
+            w-[32px]
+            h-[32px]
+            bg-gray-200
+            rounded-lg
+            text-2xl
+            text-red-500
+            font-bold
+        
+        ;
+
+    }
+
+    .beverages-size-buttons {
+
+        @apply 
+        
+            box-content
+            px-5
+            py-2.5
+            ring-2
+            ring-gray-200
+            rounded-xl
+        
+        ;
+
+    }
+
+    .beverages-size-buttons.active {
+
+        background: theme( "colors.red.500" );
+        color: white;
+
+    }
+
+}
+
