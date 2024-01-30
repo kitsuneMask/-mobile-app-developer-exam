@@ -13,6 +13,7 @@ import MyFavorites from "../views/MyFavorites.vue";
 import OrderTracker from "../views/OrderTracker.vue";
 import OrderHistory from "../views/OrderHistory.vue";
 import AddBurger from "../components/AddBurger.vue";
+import MyBag from "../components/MyBag.vue";
 
 const routes = [
 
@@ -108,6 +109,14 @@ const routes = [
     path : "/add-burger/:id",
     name : "Add Burger",
     component : AddBurger
+
+  },
+
+  {
+
+    path : "/my-bag",
+    name : "My Bag",
+    component : MyBag
 
   }
 

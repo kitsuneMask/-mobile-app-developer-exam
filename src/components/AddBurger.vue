@@ -18,8 +18,8 @@
 
                     <ion-title class="font-bold">Add Burger</ion-title>
 
-                    <!-- my orders -->
-                    <img src="../img/my_orders_active.svg" @click="USE_ROUTER.push( '/my-orders' )" class="w-[24px] mr-5">
+                    <!-- my bag -->
+                    <img src="../img/my_orders_active.svg" @click="USE_ROUTER.push( '/my-bag' )" class="w-[24px] mr-5">
 
                 </div>
 
@@ -142,11 +142,29 @@
                 </div>
 
                 <!-- ADD TO BAG -->
-                <button @click="ADD_TO_BAG" class="box-content w-[calc(100%-112.5px)] ring-2 ring-gray-200 rounded-xl bg-red-500/95 py-5 px-10  text-lg text-white font-bold fixed bottom-2.5 z-50">Add to Bag</button>
+                <button @click="ADD_BAG" class="box-content w-[calc(100%-112.5px)] ring-2 ring-gray-200 rounded-xl bg-red-500/95 py-5 px-10  text-lg text-white font-bold fixed bottom-2.5 z-50">Add to Bag</button>
 
             </div>
 
         </ion-content>
+
+        <!-- POP UP - CHECK OUT & ADD MORE -->
+        <div v-if="ADD_TO_BAG_IS_CLICKED" class="flex flex-col items-center justify-center w-full h-full bg-black/30 fixed top-0 left-0 z-50">
+
+            <!-- CONTAINER -->
+            <div class="flex flex-col items-center w-[90%] py-5 bg-white rounded-3xl">
+
+                <img src="../img/thumbs_up.svg" class="w-20 h-20">
+
+                <span class="mt-5 text-lg text-black font-bold">Successfully Added!</span>
+                <span class="mt-2.5 text-base text-gray-500">What do you want to do now?</span>
+
+                <button class="mt-5 w-2/3 py-2.5 rounded-lg bg-red-500 text-lg text-white font-bold">Proceed to Checkout?</button>
+                <button @click="ADD_MORE" class="mt-2.5 w-2/3 text-lg text-black font-bold">Add More</button>
+
+            </div>
+
+        </div>
 
     </ion-page>
 
@@ -179,23 +197,25 @@
     const USE_ROUTER = useRouter( );
     const USE_ROUTE = useRoute( );
 
+    // STORE
+    import storeBag from "../pinia/store-bag.js";
+    const STORE_BAG = storeBag( );
+
     // JSON
     import Burgers from "../json/burgers.json";
 
-    // burger
     const BURGER = Burgers.filter( burger => burger.id == USE_ROUTE.params.id )[ 0 ];
 
-    // quantity
+    const ADD_TO_BAG_IS_CLICKED = ref( false );
+
     const QUANTITY = ref( 1 );
 
-    // price
     const PRICE = computed( ( ) => {
         
         return BURGER.price * QUANTITY.value;
     
     } );
 
-    // BEVERAGES
     const BEVERAGES = reactive( {
 
         value : "Coke",
@@ -209,7 +229,7 @@
 
         changeSize ( ev ) {
 
-            // deactivate previou button
+            // deactivate previous button
             document.querySelector( ".beverages-size-buttons.active" ).classList.remove( "active" );
             
             // activate new button
@@ -221,7 +241,6 @@
 
     } );
 
-    // ADD-ONS
     const ADD_ONS = reactive( {
 
         fries : false,
@@ -229,13 +248,87 @@
 
     } );
 
+    const ADD_BAG = ( ) => {
+
+        // close popup - proceed to checkout & add more
+        ADD_TO_BAG_IS_CLICKED.value = ADD_TO_BAG_IS_CLICKED.value ? false : true;
+
+        ADD_TO_BAG( );
+
+    }
+
     const ADD_TO_BAG = ( ) => {
 
-        const DATA = {
+        const PRICE_TOTAL = ( ) => {
 
-            data
+            let total = BURGER.price;
+
+            // check for fries addons
+            total += ADD_ONS.fries ? 1 : 0;
+
+            // check for fries ice-cream
+            total += ADD_ONS.iceCream ? 1 : 0;
+
+            return total;
 
         };
+
+        const ORDER = {
+
+            id : Math.floor( Math.random( ) * 999999999 ),
+            burger : {
+
+                id : BURGER.id,
+                quantity : QUANTITY.value,
+                price : PRICE_TOTAL( )
+
+            },
+
+            beverages : {
+
+                value : BEVERAGES.value,
+                size : BEVERAGES.size
+
+            },
+
+            addOns : {
+
+                fries : ADD_ONS.fries,
+                iceCream : ADD_ONS.iceCream
+
+            }
+
+        };
+
+        // add order in my bag
+        STORE_BAG.addToBag( ORDER );
+
+    };
+
+    const ADD_MORE = ( ) => {
+
+        RESET_VALUE( );
+        USE_ROUTER.push( '/order-now' );
+
+    };
+
+    const RESET_VALUE = ( ) => {
+
+        // close popup - proceed to checkout & add more
+        ADD_TO_BAG_IS_CLICKED.value = ADD_TO_BAG_IS_CLICKED.value ? false : true;
+
+        QUANTITY.value = 1;
+
+        BEVERAGES.value = "Coke";
+        BEVERAGES.size = "Regular";
+
+        // deactivate previous beverages size button
+        document.querySelector( ".beverages-size-buttons.active" ).classList.remove( "active" );
+        // activate default button
+        document.querySelector( ".beverages-size-buttons" ).classList.add( "active" );
+
+        ADD_ONS.fries = false;
+        ADD_ONS.iceCream = false;
 
     };
 

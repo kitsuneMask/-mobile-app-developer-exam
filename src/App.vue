@@ -9,7 +9,7 @@
       <!-- CONTENT -->
       <ion-content class="ion-padding">
 
-        <UserProfile />
+        <ProfieSideBar />
 
         <!-- NAV1 -->
         <ul>
@@ -120,7 +120,7 @@
   const USE_ROUTE = useRoute( );
 
   // COMPONENTS
-  import UserProfile from "./components/UserProfile.vue";
+  import ProfieSideBar from "./components/ProfileSideBar.vue";
 
   // STORE
   import storeNavigation from "./pinia/store-navigation.js";

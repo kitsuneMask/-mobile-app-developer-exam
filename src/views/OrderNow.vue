@@ -17,8 +17,8 @@
 
           <ion-title class="font-bold">Our Burgers</ion-title>
 
-          <!-- my orders -->
-          <img src="../img/my_orders_active.svg" @click="USE_ROUTER.push( '/my-orders' )" class="w-[24px] mr-5">
+          <!-- my bag -->
+          <img src="../img/my_orders_active.svg" @click="USE_ROUTER.push( '/my-bag' )" class="w-[24px] mr-5">
 
         </div>
 
@@ -29,9 +29,9 @@
       <!-- SEARCH BAR -->
       <div class="flex items-center h-[60px] rounded-xl border-2 border-gray-200 bg-white" @click="SEARCHBAR.focus">
 
-        <ion-icon name="search" size="large" color="danger" class="ml-2.5"></ion-icon>
+        <img src="../img/search.svg" class="w-[28px] h-[28px] ml-2.5" />
         <input type="search" placeholder="try our new Monsta Burger!" class="basis-full border-none outline-none bg-transparent ml-5">
-        <ion-icon name="options" size="large" color="danger" class="mr-2.5"></ion-icon>
+        <img src="../img/option.svg" class="w-[24px] h-[24px] mr-2.5" />
 
       </div>
 
@@ -121,7 +121,6 @@
     IonToolbar,
     IonButtons,
     IonMenuButton,
-    IonIcon
   
   } from '@ionic/vue';
 

@@ -23,7 +23,7 @@
 
             <span class="ml-5 font-bold">0 Points</span>
 
-            <ion-icon class="ml-2.5 text-lg text-red-500 font-semibold" name="chevron-forward-outline"></ion-icon>
+            <img src="../img/chevron_right.svg" />
 
           </div>
 
@@ -69,7 +69,7 @@
       <!-- SEARCH BAR -->
       <div class="flex items-center h-[60px] rounded-xl border-2 border-gray-200 bg-white mt-5" @click="SEARCHBAR.focus">
 
-        <ion-icon name="search" size="large" color="danger" class="ml-2.5"></ion-icon>
+        <img src="../img/search.svg" class="w-[28px] h-[28px] ml-2.5" />
         <input type="search" placeholder="try our new Mount Burgerest!" class="basis-full border-none outline-none bg-transparent ml-5">
 
       </div>
@@ -85,7 +85,7 @@
           <!-- VIEW ALL -->
           <button class="flex items-center text-red-500">
 
-            View All<ion-icon class="ml-[5px] text-base text-red-500 font-semibold" name="chevron-forward-outline"></ion-icon>
+            View All<img src="../img/chevron_right.svg" />
 
           </button>
 
@@ -213,7 +213,11 @@
 
             <li
 
+              data-navigation="order-now"
+              :data-path="`/add-burger/${ burger.id }`"
+
               v-for="burger in STORE_BURGERS.popular"
+              @click="NAVIGATE"
 
               class="
               
@@ -275,7 +279,6 @@
     IonPage,
     IonContent, 
     IonHeader, 
-    IonIcon, 
     IonToolbar,
     IonButtons,
     IonMenuButton,
