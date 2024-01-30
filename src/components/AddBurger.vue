@@ -12,7 +12,7 @@
 
                     <button @click="USE_ROUTER.push( '/order-now' )" class="flex justify-center items-center w-[30px] h-[30px] rounded-lg bg-gray-200">
 
-                        <ion-icon name="chevron-back" class="text-lg font-bold"></ion-icon>
+                        <img src="../img/chevron_left.svg" />
 
                     </button>
 

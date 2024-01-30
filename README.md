@@ -8,6 +8,7 @@ HOW TO INSTALL
 1. go to apk folder.
 2. download mobile-app-developer-exam.apk
 3. open it and click 'Install'
+4. If prompted by Google Play Protect just click 'More Details' and click 'Install Anyway'
 
 
 
