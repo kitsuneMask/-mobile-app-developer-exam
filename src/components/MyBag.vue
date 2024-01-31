@@ -31,7 +31,7 @@
            <ul class="flex flex-col mb-20">
 
                 <!-- ORDER -->
-                <li v-for="order in STORE_BAG.bag" class="flex items-center mt-5">
+                <li v-for="order in STORE_BAG.bag" class="flex items-center mt-2.5">
 
                     <!-- WRAPPER -->
                     <div class="flex flex-col basis-full border-2 border-gray-200 rounded-xl p-2.5 bg-white">
@@ -60,7 +60,7 @@
                         <div class="flex justify-between items-center mt-5">
 
                             <!-- price -->
-                            <span class="text-2xl text-red-500 font-bold">${{ ( order.burger.price * order.burger.quantity ).toFixed( 2 ) }}</span>
+                            <span class="text-xl text-red-500 font-bold">${{ ( order.burger.price * order.burger.quantity ).toFixed( 2 ) }}</span>
 
                             <!-- QUANTITY -->
                             <div class="flex items-center">
@@ -77,6 +77,7 @@
 
                     </div>
 
+                    <!-- option -->
                     <button class="w-[20px] h-[30px] ml-2.5 bg-[url('../img/option_2.svg')] bg-no-repeat bg-center bg-cover"></button>
 
                 </li>
@@ -84,17 +85,17 @@
            </ul>
 
            <!-- SUB TOTAL & CHECKOUT -->
-           <div class="flex justify-between w-[90%] p-5 rounded-xl bg-red-500/90 fixed bottom-2.5 left-[50%] translate-x-[-50%] z-50">
+           <div class="flex justify-between items-center w-full border-t-2 border-gray-200 p-2.5 bg-white fixed bottom-0 left-0">
 
                 <!-- SUB TOTAL -->
                 <div class="flex flex-col">
 
-                    <span class="text-gray-200">Sub Total: </span>
-                    <span class="text-2xl text-white font-bold">${{ STORE_BAG.totalPrice }}</span>
+                    <span class="text-gray-500">Sub Total: </span>
+                    <span class="text-xl text-black font-bold">${{ STORE_BAG.totalPrice }}</span>
 
                 </div>
 
-                <button class="rounded-lg bg-white px-5 text-lg text-red-500 font-bold">Check Out</button>
+                <button @click="USE_ROUTER.push( '/checkout' )" class="h-[40px] rounded-lg bg-red-500 px-10 text-white">Check Out</button>
 
            </div>
 
@@ -115,11 +116,7 @@
         IonHeader,
         IonContent,
         IonToolbar,
-        IonTitle,
-        IonIcon,
-        IonSelect,
-        IonSelectOption,
-        IonCheckbox
+        IonTitle
 
     } from "@ionic/vue";
 
@@ -156,22 +153,3 @@
 
 </script>
 
-
-<!-- STYLE -->
-<style scoped>
-
-    ion-checkbox {
-
-        --size: 24px;
-        --checkbox-background-checked: theme( "colors.red.500" );
-
-    }
-
-    ion-checkbox::part(container) {
-
-        border-radius: 6px;
-        border: 1px solid theme( "colors.gray.200" );
-
-    }
-
-</style>

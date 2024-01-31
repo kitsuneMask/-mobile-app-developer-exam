@@ -14,6 +14,7 @@ import OrderTracker from "../views/OrderTracker.vue";
 import OrderHistory from "../views/OrderHistory.vue";
 import AddBurger from "../components/AddBurger.vue";
 import MyBag from "../components/MyBag.vue";
+import Checkout from "../components/Checkout.vue";
 
 const routes = [
 
@@ -117,6 +118,14 @@ const routes = [
     path : "/my-bag",
     name : "My Bag",
     component : MyBag
+
+  },
+
+  {
+
+    path : "/checkout",
+    name : "Checkout",
+    component : Checkout
 
   }
 

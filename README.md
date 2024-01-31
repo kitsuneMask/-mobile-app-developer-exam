@@ -16,7 +16,7 @@ HOW TO INSTALL
 
 Dear Ma'am / Sir,
 
-I hope this message finds you well. I regret to inform you that due to a health issue – a severe case of diarrhea lasting for the past two and a half days – I was unable to complete the job application exam on time.
+I hope this message finds you well. I regret to inform you that due to a health issue – a severe case of diarrhea lasting for two and a half days – I was unable to complete the job application exam on time.
 
 I sincerely hope for your understanding regarding this unforeseen circumstance. I value this opportunity and remain committed to providing my best work. If there are any possibilities for extensions or alternative arrangements, I would greatly appreciate your consideration.
 

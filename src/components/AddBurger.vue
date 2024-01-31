@@ -92,9 +92,9 @@
                     <!-- SIZE -->
                     <div class="flex gap-2.5 mt-2.5">
 
-                        <button @click="BEVERAGES.changeSize" class="beverages-size-buttons active">Regular</button>
-                        <button @click="BEVERAGES.changeSize" class="beverages-size-buttons">Large</button>
-                        <button @click="BEVERAGES.changeSize" class="beverages-size-buttons">X-Large</button>
+                        <button @click="BEVERAGES.size = 'Regular'" class="beverages-size-buttons" :class="{ active : BEVERAGES.size === 'Regular'}">Regular</button>
+                        <button @click="BEVERAGES.size = 'Large'" class="beverages-size-buttons" :class="{ active : BEVERAGES.size === 'Large'}">Large</button>
+                        <button @click="BEVERAGES.size = 'X-Large'" class="beverages-size-buttons" :class="{ active : BEVERAGES.size === 'X-Large'}">X-Large</button>
 
                     </div>
 
@@ -159,7 +159,7 @@
                 <span class="mt-5 text-lg text-black font-bold">Successfully Added!</span>
                 <span class="mt-2.5 text-base text-gray-500">What do you want to do now?</span>
 
-                <button class="mt-5 w-2/3 py-2.5 rounded-lg bg-red-500 text-lg text-white font-bold">Proceed to Checkout?</button>
+                <button @click="CHECKOUT" class="mt-5 w-2/3 py-2.5 rounded-lg bg-red-500 text-lg text-white font-bold">Proceed to Checkout?</button>
                 <button @click="ADD_MORE" class="mt-2.5 w-2/3 text-lg text-black font-bold">Add More</button>
 
             </div>
@@ -227,18 +227,6 @@
 
         },
 
-        changeSize ( ev ) {
-
-            // deactivate previous button
-            document.querySelector( ".beverages-size-buttons.active" ).classList.remove( "active" );
-            
-            // activate new button
-            ev.currentTarget.classList.add( "active" );
-
-            BEVERAGES.size = ev.currentTarget.innerHTML;
-            
-        }
-
     } );
 
     const ADD_ONS = reactive( {
@@ -305,6 +293,13 @@
 
     };
 
+    const CHECKOUT = ( ) => {
+
+        RESET_VALUE( );
+        USE_ROUTER.push( '/checkout' );
+
+    };
+
     const ADD_MORE = ( ) => {
 
         RESET_VALUE( );
@@ -321,11 +316,6 @@
 
         BEVERAGES.value = "Coke";
         BEVERAGES.size = "Regular";
-
-        // deactivate previous beverages size button
-        document.querySelector( ".beverages-size-buttons.active" ).classList.remove( "active" );
-        // activate default button
-        document.querySelector( ".beverages-size-buttons" ).classList.add( "active" );
 
         ADD_ONS.fries = false;
         ADD_ONS.iceCream = false;

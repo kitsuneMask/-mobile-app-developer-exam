@@ -606,10 +606,6 @@ video {
   left: 100px;
 }
 
-.left-\[50\%\] {
-  left: 50%;
-}
-
 .right-0 {
   right: 0px;
 }
@@ -790,6 +786,10 @@ video {
   height: 32px;
 }
 
+.h-\[40px\] {
+  height: 40px;
+}
+
 .h-\[60px\] {
   height: 60px;
 }
@@ -890,13 +890,12 @@ video {
   max-width: 150px;
 }
 
-.basis-full {
-  flex-basis: 100%;
+.grow-0 {
+  flex-grow: 0;
 }
 
-.translate-x-\[-50\%\] {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.basis-full {
+  flex-basis: 100%;
 }
 
 .translate-x-\[10px\] {
@@ -986,6 +985,14 @@ video {
   column-gap: 1.25rem;
 }
 
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
+.gap-y-2\.5 {
+  row-gap: 0.625rem;
+}
+
 .self-center {
   align-self: center;
 }
@@ -1068,10 +1075,6 @@ video {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
-.bg-red-500\/90 {
-  background-color: rgb(239 68 68 / 0.9);
-}
-
 .bg-red-500\/95 {
   background-color: rgb(239 68 68 / 0.95);
 }
@@ -1145,6 +1148,14 @@ video {
   background-image: url('../img/order_tracker.svg');
 }
 
+.bg-\[url\(\'\.\.\/img\/paynamics\.png\'\)\] {
+  background-image: url('../img/paynamics.png');
+}
+
+.bg-\[url\(\'\.\.\/img\/paypal\.svg\'\)\] {
+  background-image: url('../img/paypal.svg');
+}
+
 .bg-\[url\(\'\.\.\/img\/special_offers\.svg\'\)\] {
   background-image: url('../img/special_offers.svg');
 }
@@ -1159,6 +1170,10 @@ video {
 
 .bg-\[length\:50\%_50\%\] {
   background-size: 50% 50%;
+}
+
+.bg-contain {
+  background-size: contain;
 }
 
 .bg-cover {
@@ -1189,10 +1204,6 @@ video {
   padding: 0.625rem;
 }
 
-.p-5 {
-  padding: 1.25rem;
-}
-
 .p-\[2\.5px\] {
   padding: 2.5px;
 }
@@ -1206,9 +1217,14 @@ video {
   padding-right: 2.5rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-2\.5 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
 }
 
 .py-2 {
@@ -1300,11 +1316,6 @@ video {
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
-}
-
-.text-gray-200 {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 .text-gray-400 {
