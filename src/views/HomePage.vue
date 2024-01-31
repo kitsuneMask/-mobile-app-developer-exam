@@ -17,7 +17,7 @@
         <div class="flex justify-between">
 
           <!-- TIER & LOYALTY POINTS -->
-          <div class="flex items-center">
+          <div @click="USE_ROUTER.push( '/loyalty-points' )" class="flex items-center">
 
             <img src="../img/crown.webp" class="w-[32px] h-auto object-contain ml-5" >
 

@@ -15,6 +15,7 @@ import OrderHistory from "../views/OrderHistory.vue";
 import AddBurger from "../components/AddBurger.vue";
 import MyBag from "../components/MyBag.vue";
 import Checkout from "../components/Checkout.vue";
+import LoyaltyPoints from "../views/LoyaltyPoints.vue";
 
 const routes = [
 
@@ -126,6 +127,14 @@ const routes = [
     path : "/checkout",
     name : "Checkout",
     component : Checkout
+
+  },
+
+  {
+
+    path : "/loyalty-points",
+    name : "Loyalty Points",
+    component : LoyaltyPoints
 
   }
 

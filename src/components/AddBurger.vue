@@ -7,7 +7,7 @@
         <ion-header class="shadow-none">
             <ion-toolbar>
 
-                <!-- TITLE AND MY ORDERS BUTTON -->
+                <!-- TITLE AND MY BAG BUTTON -->
                 <div class="flex justify-between items-center ion-padding">
 
                     <button @click="USE_ROUTER.push( '/order-now' )" class="flex justify-center items-center w-[30px] h-[30px] rounded-lg bg-gray-200">
@@ -105,7 +105,7 @@
 
                     <h3 class="text-xl font-bold">Add-Ons</h3>
 
-                    <!-- fries -->
+                    <!-- FRIES -->
                     <div class="flex items-center h-[100px] mt-2.5 rounded-xl bg-gray-200">
 
                         <img src="../img/fries.png" class="w-20 ml-2.5 object-contain">
@@ -122,7 +122,7 @@
 
                     </div>
 
-                    <!-- icecream -->
+                    <!-- ICECREAM -->
                     <div class="flex items-center h-[100px]  mt-2.5 mb-20 rounded-xl bg-gray-200">
 
                         <img src="../img/ice-cream.png" class="w-20 ml-2.5 object-contain">

@@ -12,7 +12,7 @@
           </ion-menu-button>
         </ion-buttons>
 
-        <!-- TITLE AND MY ORDERS BUTTON -->
+        <!-- TITLE AND MY BAG BUTTON -->
         <div class="flex justify-between items-center">
 
           <ion-title class="font-bold">Our Burgers</ion-title>
@@ -38,9 +38,9 @@
       <!-- QUICK FILTER -->
       <div class="flex flex-nowrap gap-x-2.5 mt-2.5 overflow-x-scroll">
 
-        <button @click="QUICK_FILTER.click" class="quick-filter-buttons active">All</button>
-        <button @click="QUICK_FILTER.click" class="quick-filter-buttons">Affordable</button>
-        <button @click="QUICK_FILTER.click" class="quick-filter-buttons">Luxurious</button>
+        <button @click="QUICK_FILTER.filter = 'All'" class="quick-filter-buttons" :class="{ active : QUICK_FILTER.filter === 'All'}">All</button>
+        <button @click="QUICK_FILTER.filter = 'Affordable'" class="quick-filter-buttons" :class="{ active : QUICK_FILTER.filter === 'Affordable'}">Affordable</button>
+        <button @click="QUICK_FILTER.filter = 'Luxurious'" class="quick-filter-buttons" :class="{ active : QUICK_FILTER.filter === 'Luxurious'}">Luxurious</button>
         <button class="quick-filter-buttons">Special Offers</button>
         <button class="quick-filter-buttons">Popular</button>
         <button class="quick-filter-buttons">New</button>
@@ -151,21 +151,6 @@
   const QUICK_FILTER = reactive( {
 
     filter : "All",
-
-    click ( ev ) {
-
-      const NEW_BUTTON = ev.currentTarget;
-      const PREV_BUTTON = document.querySelector( ".quick-filter-buttons.active" );
-
-      // deactivate previous button
-      PREV_BUTTON.classList.remove( "active" );
-
-      // activate new button
-      NEW_BUTTON.classList.add( "active" );
-
-      QUICK_FILTER.filter = NEW_BUTTON.innerHTML;
-
-    },
 
     burgers : computed( ( ) => {
 
