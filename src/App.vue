@@ -48,27 +48,27 @@
         <!-- NAV2 -->
         <ul>
 
-          <li data-navigation="my-orders" data-path="/my-orders" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-orders'}">
+          <li data-navigation="my-orders" data-path="/my-orders" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-orders' }">
             <ion-menu-toggle class="flex items-center">
                 <span class="nav-buttons-icons bg-[url('../img/my_orders.svg')] group-[.active]:bg-[url('../img/my_orders_active.svg')]"></span>My Orders
             </ion-menu-toggle>
           </li>
-          <li data-navigation="my-account" data-path="/my-account" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-account'}">
+          <li data-navigation="my-account" data-path="/my-account" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-account' }">
             <ion-menu-toggle class="flex items-center">
                 <span class="nav-buttons-icons bg-[url('../img/my_account.svg')] group-[.active]:bg-[url('../img/my_account_active.svg')]"></span>My Account
             </ion-menu-toggle>
           </li>
-          <li data-navigation="my-favorites" data-path="/my-favorites" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-favorites'}">
+          <li data-navigation="my-favorites" data-path="/my-favorites" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-favorites' }">
             <ion-menu-toggle class="flex items-center">
                 <span class="nav-buttons-icons bg-[url('../img/my_favorites.svg')] group-[.active]:bg-[url('../img/my_favorites_active.svg')]"></span>My Favorites
             </ion-menu-toggle>
           </li>
-          <li data-navigation="order-tracker" data-path="/order-tracker" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'order-tracker'}">
+          <li data-navigation="order-tracker" data-path="/order-tracker" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'order-tracker' }">
             <ion-menu-toggle class="flex items-center">
                 <span class="nav-buttons-icons bg-[url('../img/order_tracker.svg')] group-[.active]:bg-[url('../img/order_tracker_active.svg')]"></span>Order Tracker
             </ion-menu-toggle>
           </li>
-          <li data-navigation="order-history" data-path="/order-history" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'order-history'}">
+          <li data-navigation="order-history" data-path="/order-history" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'order-history' }">
             <ion-menu-toggle class="flex items-center">
                 <span class="nav-buttons-icons bg-[url('../img/order_history.svg')] group-[.active]:bg-[url('../img/order_history_active.svg')]"></span>Order History
             </ion-menu-toggle>

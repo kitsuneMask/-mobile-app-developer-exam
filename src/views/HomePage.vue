@@ -70,12 +70,12 @@
       <div class="flex items-center h-[60px] rounded-xl border-2 border-gray-200 bg-white mt-5" @click="SEARCHBAR.focus">
 
         <img src="../img/search.svg" class="w-[28px] h-[28px] ml-2.5" />
-        <input type="search" placeholder="try our new Mount Burgerest!" class="basis-full border-none outline-none bg-transparent ml-5">
+        <input type="search" placeholder="try our new Mount Burgerest!" v-model="SEARCHBAR.value" @input="console.log( SEARCHBAR.value )" class="basis-full border-none outline-none bg-transparent ml-5">
 
       </div>
 
       <!-- SPECIAL OFFERS -->
-      <section class="flex flex-col mt-5">
+      <section v-if="SEARCHBAR.value.length > 0 ? STORE_BURGERS.specialOffers.filter( burger => burger.name.toLowerCase( ).includes( SEARCHBAR.value.toLowerCase( ) ) ).length > 0 ? true : false : true" class="flex flex-col mt-5">
 
         <!-- HEAD -->
         <div class="flex justify-between">
@@ -84,13 +84,13 @@
 
           <!-- VIEW ALL -->
           <button class="flex items-center text-red-500">
-
+            
             View All<img src="../img/chevron_right.svg" />
-
+            
           </button>
-
+            
         </div>
-
+          
         <!-- CONTENT -->
         <div class="flex mt-2.5 overflow-x-scroll">
 
@@ -100,7 +100,7 @@
             <!-- BURGER -->
             <li 
 
-              v-for="burger in STORE_BURGERS.specialOffers"
+              v-for="burger in ( SEARCHBAR.value.length > 0 ? STORE_BURGERS.specialOffers.filter( burger => burger.name.toLowerCase( ).includes( SEARCHBAR.value.toLowerCase( ) ) ) : STORE_BURGERS.specialOffers )"
             
               class="
 
@@ -152,7 +152,7 @@
       </section>
 
       <!-- CATEGORY -->
-      <section class="flex flex-col mt-5">
+      <section v-if="!SEARCHBAR.value.length > 0" class="flex flex-col mt-5">
 
         <h3 class="text-xl font-bold">Category</h3>
 
@@ -185,23 +185,22 @@
 
       </section>
 
-      <!-- CATEGORY -->
-      <section class="flex flex-col mt-5">
+      <!-- WHAT'S NEW -->
+      <section v-if="SEARCHBAR.value.length > 0 ? ( 'burgerest'.includes( SEARCHBAR.value.toLowerCase( ) ) || 'monsta burger'.includes( SEARCHBAR.value.toLowerCase( ) ) ) ? true : false : true" class="flex flex-col mt-5">
 
         <h3 class="text-xl font-bold">What's New?</h3>
 
         <!-- CONTENT -->
         <div class="flex flex-nowrap gap-2.5 mt-2.5 overflow-x-scroll">
 
-          <div class="min-w-[300px] h-[150px] border-2 border-gray-200 rounded-xl bg-[url('../img/Mount_Burgerest.png')] bg-no-repeat bg-center bg-cover"></div>
-
-          <div class="min-w-[300px] h-[150px] border-2 border-gray-200 rounded-xl bg-[url('../img/Monsta_Burger.png')] bg-no-repeat bg-center bg-cover"></div>
+          <div v-if="SEARCHBAR.value.length > 0 ? 'burgerest'.includes( SEARCHBAR.value.toLowerCase( ) ) ? true : false : true" class="min-w-[300px] h-[150px] border-2 border-gray-200 rounded-xl bg-[url('../img/Mount_Burgerest.png')] bg-no-repeat bg-center bg-cover"></div>
+          <div v-if="SEARCHBAR.value.length > 0 ? 'monsta burger'.includes( SEARCHBAR.value.toLowerCase( ) ) ? true : false : true" class="min-w-[300px] h-[150px] border-2 border-gray-200 rounded-xl bg-[url('../img/Monsta_Burger.png')] bg-no-repeat bg-center bg-cover"></div>
 
         </div>
 
       </section>
 
-      <!-- CATEGORY -->
+      <!-- MOST POPULAR -->
       <section class="flex flex-col mt-5 mb-10">
 
         <h3 class="text-xl font-bold">Most Popular</h3>
@@ -216,7 +215,7 @@
               data-navigation="order-now"
               :data-path="`/add-burger/${ burger.id }`"
 
-              v-for="burger in STORE_BURGERS.popular"
+              v-for="burger in ( SEARCHBAR.value.length > 0 ? STORE_BURGERS.popular.filter( burger => burger.name.toLowerCase( ).includes( SEARCHBAR.value.toLowerCase( ) ) ) : STORE_BURGERS.popular )"
               @click="NAVIGATE"
 
               class="
@@ -289,6 +288,9 @@
   import { useRouter } from "vue-router";
   const USE_ROUTER = useRouter( );
 
+  // VUE
+  import { reactive } from "vue";
+
   // STORE
   import storeNavigation from "../pinia/store-navigation.js";
   import storeBurgers from "../pinia/store-burgers.js";
@@ -306,7 +308,9 @@
   };
 
   // SEARCHBAR
-  const SEARCHBAR = {
+  const SEARCHBAR = reactive( {
+
+    value : '',
 
     focus ( ) {
 
@@ -314,7 +318,7 @@
 
     }
 
-  };
+  } );
 
 </script>
 

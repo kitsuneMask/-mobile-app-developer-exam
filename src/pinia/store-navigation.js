@@ -18,14 +18,12 @@ const storeNavigation = defineStore( {
         changeActivePath ( newActive ) {
 
             this.activePath = newActive;
-            console.log( 123 );
 
         },
 
         changeActiveNavigation ( newActive ) {
 
             this.activeNavigation = newActive;
-            console.log( 456 );
 
         }
 

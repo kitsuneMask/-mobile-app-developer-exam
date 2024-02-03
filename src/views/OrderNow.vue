@@ -30,7 +30,7 @@
       <div class="flex items-center h-[60px] rounded-xl border-2 border-gray-200 bg-white" @click="SEARCHBAR.focus">
 
         <img src="../img/search.svg" class="w-[28px] h-[28px] ml-2.5" />
-        <input type="search" placeholder="try our new Monsta Burger!" class="basis-full border-none outline-none bg-transparent ml-5">
+        <input type="search" placeholder="try our new Monsta Burger!" v-model="SEARCHBAR.value" class="basis-full border-none outline-none bg-transparent ml-5">
         <img src="../img/option.svg" class="w-[24px] h-[24px] mr-2.5" />
 
       </div>
@@ -57,7 +57,7 @@
 
             <li
 
-              v-for="burger in QUICK_FILTER.burgers"
+              v-for="burger in ( SEARCHBAR.value.length > 0 ? QUICK_FILTER.burgers.filter( burger => burger.name.toLowerCase( ).includes( SEARCHBAR.value.toLowerCase( ) ) ) : QUICK_FILTER.burgers )"
               @click="USE_ROUTER.push( `/add-burger/${ burger.id }` )"
 
               class="
@@ -137,7 +137,9 @@
 
 
   // SEARCHBAR
-  const SEARCHBAR = {
+  const SEARCHBAR = reactive( {
+
+    value : '',
 
     focus ( ) {
 
@@ -145,7 +147,7 @@
 
     }
 
-  };
+  } );
 
   // QUICK FILTER
   const QUICK_FILTER = reactive( {
