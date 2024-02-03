@@ -1502,6 +1502,11 @@ video {
   color: white;
 }
 
+.active\:text-red-500:active {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .group.active .group-\[\.active\]\:bg-\[url\(\'\.\.\/img\/FAQs_active\.svg\'\)\] {
   background-image: url('../img/FAQs_active.svg');
 }
@@ -1536,5 +1541,10 @@ video {
 
 .group.active .group-\[\.active\]\:bg-\[url\(\'\.\.\/img\/store_locator_active\.svg\'\)\] {
   background-image: url('../img/store_locator_active.svg');
+}
+
+.group.active .group-\[\.active\]\:text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
