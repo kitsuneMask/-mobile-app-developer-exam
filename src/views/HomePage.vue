@@ -126,8 +126,8 @@
               <!-- NAME -->
               <div class="w-[200px] absolute top-[30px] left-[100px]">
 
-                <span class="text-2xl text-gray-100 font-bold leading-5 uppercase absolute opacity-50">{{ burger.name }}</span>
-                <span class="text-2xl font-bold leading-5 uppercase absolute translate-x-[10px] translate-y-[10px]">{{ burger.name }}</span>
+                <span class="text-2xl text-gray-100 font-bold leading-5 uppercase absolute blur-[1px] opacity-50">{{ burger.name }}</span>
+                <span class="text-2xl font-bold leading-5 uppercase absolute translate-x-[5px] translate-y-[5px]">{{ burger.name }}</span>
 
               </div>
 

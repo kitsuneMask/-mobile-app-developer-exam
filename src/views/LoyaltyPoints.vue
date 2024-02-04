@@ -136,7 +136,7 @@
     } from '@ionic/vue';
   
     // VUE
-    import { onMounted, ref, reactive } from "vue";
+    import { onMounted, ref } from "vue";
   
     // VUE ROUTER
     import { useRouter } from "vue-router";
@@ -156,12 +156,22 @@
     const LPI_CONTEXT = ref( null );
 
 
-    // LPI VALUE ANIMATION
-    const LPI_VALUE_ANIMATION = ref( ( ) => {
+    // DISPLAY LPI
+    const LPI_DISPLAY = ( ) => {
 
-        return STORE_LOYALTY_POINTS.points;
+        requestAnimationFrame( LPI_DISPLAY );
 
-    } );
+        LPI_CONTEXT.value.clearRect( 0, 0, LOYALTY_POINTS_INDICATOR.value.width, LOYALTY_POINTS_INDICATOR.value.height );
+
+        const CONVERTED_VALUE = ( ( STORE_LOYALTY_POINTS.points / 160 ) * ( Math.PI * 2 ) ) - ( Math.PI * .5 ) ;
+
+        LPI_CONTEXT.value.beginPath( );
+        LPI_CONTEXT.value.arc( LOYALTY_POINTS_INDICATOR.value.width / 2, LOYALTY_POINTS_INDICATOR.value.height /2, 150 / 2, 0 - ( Math.PI * .5 ), CONVERTED_VALUE );
+        LPI_CONTEXT.value.lineWidth = 37;
+        LPI_CONTEXT.value.strokeStyle = "rgba( 239, 68, 68, .8 )";
+        LPI_CONTEXT.value.stroke( );
+
+    };
   
 
     onMounted( ( ) => {
@@ -169,12 +179,11 @@
         // update lpi context
         LPI_CONTEXT.value = LOYALTY_POINTS_INDICATOR.value.getContext( "2d" );
 
-        console.log( LPI_CONTEXT.value );
+        //  display lpi
+        LPI_DISPLAY( );
 
     } );
 
-
-  
   </script>
   
   
