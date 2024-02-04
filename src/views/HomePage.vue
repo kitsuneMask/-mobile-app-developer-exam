@@ -17,7 +17,7 @@
         <div class="flex justify-between">
 
           <!-- TIER & LOYALTY POINTS -->
-          <div @click="USE_ROUTER.push( '/loyalty-points' )" class="flex items-center">
+          <div data-navigation="loyalty-points" data-path="/loyalty-points" @click="NAVIGATE" class="flex items-center">
 
             <img src="../img/crown.webp" class="w-[32px] h-auto object-contain ml-5" >
 
@@ -127,7 +127,6 @@
               <div class="w-[200px] absolute top-[30px] left-[100px]">
 
                 <span class="text-2xl text-gray-100 font-bold leading-5 uppercase absolute opacity-50">{{ burger.name }}</span>
-                <span class="text-2xl text-gray-500 font-bold leading-5 uppercase absolute translate-x-[5px] translate-y-[5px] opacity-50">{{ burger.name }}</span>
                 <span class="text-2xl font-bold leading-5 uppercase absolute translate-x-[10px] translate-y-[10px]">{{ burger.name }}</span>
 
               </div>
@@ -201,7 +200,7 @@
       </section>
 
       <!-- MOST POPULAR -->
-      <section class="flex flex-col mt-5 mb-10">
+      <section v-if="SEARCHBAR.value.length > 0 ? STORE_BURGERS.popular.filter( burger => burger.name.toLowerCase( ).includes( SEARCHBAR.value.toLowerCase( ) ) ).length > 0 ? true : false : true" class="flex flex-col mt-5 mb-10">
 
         <h3 class="text-xl font-bold">Most Popular</h3>
 

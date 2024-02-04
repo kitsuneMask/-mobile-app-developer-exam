@@ -186,7 +186,7 @@
                         <!-- DETAILS -->
                         <div class="flex flex-col basis-full">
 
-                            <span class="font-bold">Loyalty Points <span class="text-red-500">( 0 Points )</span></span>
+                            <span class="font-bold">Loyalty Points <span class="text-red-500">( {{ STORE_LOYALTY_POINTS.points }} Points )</span></span>
                             <span class="mt-2.5 text-gray-500">Pay using your earned Loyalty Points</span>
 
                         </div>
@@ -301,11 +301,14 @@
 
     // STORE
     import storeBag from "../pinia/store-bag.js";
-    const STORE_BAG = storeBag( );
+    import storeLoyaltyPoints from "../pinia/store-loyalty-points";
 
     // JSON
     import Burgers from "../json/burgers.json";
 
+
+    const STORE_BAG = storeBag( );
+    const STORE_LOYALTY_POINTS = storeLoyaltyPoints( );
 
     const ADDRESS = ref( "Home" );
     const PAYMENT = ref( "COD" );

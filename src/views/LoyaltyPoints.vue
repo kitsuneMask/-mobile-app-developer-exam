@@ -46,9 +46,12 @@
                 <!-- VALUE -->
                 <div class="flex justify-center items-center w-[75%] h-[75%] shadow-lg drop-shadow-lg rounded-full bg-white text-2xl font-bold">
 
-                    <span>0</span> / <span>160</span>
+                    <span>{{ STORE_LOYALTY_POINTS.points }}</span> / <span>160</span>
 
                 </div>
+
+                <!-- value indicator -->
+                <canvas width="150" height="150" ref="LOYALTY_POINTS_INDICATOR" class="rounded-full absolute"></canvas>
 
             </div>
 
@@ -133,15 +136,43 @@
     } from '@ionic/vue';
   
     // VUE
-    import { reactive, computed } from "vue";
+    import { onMounted, ref, reactive } from "vue";
   
     // VUE ROUTER
     import { useRouter } from "vue-router";
     const USE_ROUTER = useRouter( );
+
+    // STORE
+    import storeLoyaltyPoints from "../pinia/store-loyalty-points";
+    const STORE_LOYALTY_POINTS = storeLoyaltyPoints( );
   
     // JSON
     import Burgers from "../json/burgers.json";
+
+    // REFS
+    const LOYALTY_POINTS_INDICATOR = ref( null );
+
+    // VARIABLE
+    const LPI_CONTEXT = ref( null );
+
+
+    // LPI VALUE ANIMATION
+    const LPI_VALUE_ANIMATION = ref( ( ) => {
+
+        return STORE_LOYALTY_POINTS.points;
+
+    } );
   
+
+    onMounted( ( ) => {
+
+        // update lpi context
+        LPI_CONTEXT.value = LOYALTY_POINTS_INDICATOR.value.getContext( "2d" );
+
+        console.log( LPI_CONTEXT.value );
+
+    } );
+
 
   
   </script>
