@@ -28,7 +28,7 @@
         <ion-content class="ion-padding">
 
             <!-- ORDERS -->
-           <ul class="flex flex-col mb-20">
+           <ul v-if="STORE_BAG.bag.length > 0" class="flex flex-col mb-20">
 
                 <!-- ORDER -->
                 <li v-for="order in STORE_BAG.bag" class="flex items-center mt-2.5">
@@ -84,6 +84,14 @@
 
            </ul>
 
+           <!-- NO BURGERS FOUND -->
+           <div v-else class="flex flex-col items-center mt-20">
+
+                <img src="../img/empty.png" class="w-[100px]" />
+                <span class="text-lg text-red-500 font-bold">No Burgers Found!</span>
+
+           </div>
+
            <!-- SUB TOTAL & CHECKOUT -->
            <div class="flex justify-between items-center w-full border-t-2 border-gray-200 p-2.5 bg-white fixed bottom-0 left-0">
 
@@ -95,7 +103,7 @@
 
                 </div>
 
-                <button @click="USE_ROUTER.push( '/checkout' )" class="h-[40px] rounded-lg bg-red-500 px-10 text-white">Check Out</button>
+                <button :disabled="STORE_BAG.bag.length === 0" @click="USE_ROUTER.push( '/checkout' )" class="h-[40px] rounded-lg bg-red-500 px-10 text-white">Check Out</button>
 
            </div>
 
