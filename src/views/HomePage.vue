@@ -8,8 +8,9 @@
       <ion-toolbar>
 
         <ion-buttons slot="start" class="bg-none">
-          <ion-menu-button>
+          <ion-menu-button class="relative">
             <img src="../img/side_bar.svg" class="scale-150" />
+            <span v-if="STORE_NOTIFICATIONS.count > 0" class="box-content w-[10px] h-[10px] rounded-full bg-yellow-500 p-[1px] absolute right-0 top-[12px] z-50"></span>
           </ion-menu-button>
         </ion-buttons>
 
@@ -292,8 +293,10 @@
 
   // STORE
   import storeNavigation from "../pinia/store-navigation.js";
+  import storeNotifications from "../pinia/store-notifications.js";
   import storeBurgers from "../pinia/store-burgers.js";
   const STORE_NAVIGATION = storeNavigation( );
+  const STORE_NOTIFICATIONS = storeNotifications( );
   const STORE_BURGERS = storeBurgers( );
 
   // NAVIGATE

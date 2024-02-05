@@ -12,7 +12,7 @@
         <ProfieSideBar />
 
         <!-- NAV1 -->
-        <ul>
+        <ul class="flex flex-col">
 
           <li data-navigation="home" data-path="/home" @click="NAVIGATE" class="nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'home'}">
             <ion-menu-toggle class="flex items-center">
@@ -25,8 +25,12 @@
             </ion-menu-toggle>
           </li>
           <li data-navigation="notifications" data-path="/notifications" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'notifications'}">
-            <ion-menu-toggle class="flex items-center">
-                <span class="nav-buttons-icons bg-[url('../img/notifications.svg')] group-[.active]:bg-[url('../img/notifications_active.svg')]"></span>Notifications
+            <ion-menu-toggle class="flex items-center w-full relative">
+
+                <span class="nav-buttons-icons bg-[url('../img/notifications.svg')] group-[.active]:bg-[url('../img/notifications_active.svg')]"></span>
+                <span>Notifications</span>
+                <span v-if="STORE_NOTIFICATIONS.notifications > 0" class="box-content w-[15px] h-[15px] rounded-full bg-yellow-500 mr-2.5 p-[1px] text-sm text-white text-center leading-[18px] absolute right-0">{{ STORE_NOTIFICATIONS.notifications }}</span>
+
             </ion-menu-toggle>
           </li>
           <li data-navigation="store-locator" data-path="/store-locator" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'store-locator'}">
@@ -49,8 +53,12 @@
         <ul>
 
           <li data-navigation="my-orders" data-path="/my-orders" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-orders' }">
-            <ion-menu-toggle class="flex items-center">
-                <span class="nav-buttons-icons bg-[url('../img/my_orders.svg')] group-[.active]:bg-[url('../img/my_orders_active.svg')]"></span>My Orders
+            <ion-menu-toggle class="flex items-center relative">
+
+                <span class="nav-buttons-icons bg-[url('../img/my_orders.svg')] group-[.active]:bg-[url('../img/my_orders_active.svg')]"></span>
+                <span>My Orders</span>
+                <span v-if="STORE_NOTIFICATIONS.myOrders > 0" class="box-content w-[15px] h-[15px] rounded-full bg-yellow-500 mr-2.5 p-[1px] text-sm text-white text-center leading-[18px] absolute right-0">{{ STORE_NOTIFICATIONS.myOrders }}</span>
+
             </ion-menu-toggle>
           </li>
           <li data-navigation="my-account" data-path="/my-account" @click="NAVIGATE" class="group nav-buttons" :class="{ active : STORE_NAVIGATION.activeNavigation === 'my-account' }">
@@ -124,7 +132,9 @@
 
   // STORE
   import storeNavigation from "./pinia/store-navigation.js";
+  import storeNotifications from "./pinia/store-notifications.js";
   const STORE_NAVIGATION = storeNavigation( );
+  const STORE_NOTIFICATIONS = storeNotifications( );
 
 
   const NAVIGATE = ( ev ) => {

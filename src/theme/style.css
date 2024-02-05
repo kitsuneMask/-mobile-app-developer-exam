@@ -634,6 +634,10 @@ video {
   top: 10px;
 }
 
+.top-\[12px\] {
+  top: 12px;
+}
+
 .top-\[30px\] {
   top: 30px;
 }
@@ -750,8 +754,16 @@ video {
   height: 100px;
 }
 
+.h-\[10px\] {
+  height: 10px;
+}
+
 .h-\[150px\] {
   height: 150px;
+}
+
+.h-\[15px\] {
+  height: 15px;
 }
 
 .h-\[180px\] {
@@ -822,12 +834,20 @@ video {
   width: 100px;
 }
 
+.w-\[10px\] {
+  width: 10px;
+}
+
 .w-\[120px\] {
   width: 120px;
 }
 
 .w-\[150px\] {
   width: 150px;
+}
+
+.w-\[15px\] {
+  width: 15px;
 }
 
 .w-\[200px\] {
@@ -1098,6 +1118,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\'\.\.\/img\/Affordable_Burgers\.png\'\)\] {
   background-image: url('../img/Affordable_Burgers.png');
 }
@@ -1230,6 +1255,10 @@ video {
   padding: 0.625rem;
 }
 
+.p-\[1px\] {
+  padding: 1px;
+}
+
 .p-\[2\.5px\] {
   padding: 2.5px;
 }
@@ -1283,6 +1312,10 @@ video {
 
 .pr-\[30px\] {
   padding-right: 30px;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-justify {
