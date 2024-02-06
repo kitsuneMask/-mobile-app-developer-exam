@@ -9,6 +9,7 @@
         <ion-buttons slot="start" class="bg-none">
           <ion-menu-button>
             <img src="../img/side_bar.svg" class="scale-150" />
+            <span v-if="STORE_NOTIFICATIONS.count > 0" class="box-content w-[10px] h-[10px] rounded-full bg-yellow-500 p-[1px] absolute right-0 top-[12px] z-50"></span>
           </ion-menu-button>
         </ion-buttons>
 
@@ -44,6 +45,11 @@
     IonMenuButton,
   
   } from '@ionic/vue';
+
+  // STORE
+  import storeNotifications from "../pinia/store-notifications.js";
+  const STORE_NOTIFICATIONS = storeNotifications( );
+
 
 </script>
 

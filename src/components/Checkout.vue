@@ -302,8 +302,9 @@
     // STORE
     import storeNavigation from "../pinia/store-navigation.js"
     import storeBag from "../pinia/store-bag.js";
-    import storeLoyaltyPoints from "../pinia/store-loyalty-points";
-    import storeMyOrders from "../pinia/store-my-orders";
+    import storeLoyaltyPoints from "../pinia/store-loyalty-points.js";
+    import storeMyOrders from "../pinia/store-my-orders.js";
+    import storeNotifications from "../pinia/store-notifications.js";
 
     // JSON
     import Burgers from "../json/burgers.json";
@@ -313,6 +314,7 @@
     const STORE_LOYALTY_POINTS = storeLoyaltyPoints( );
     const STORE_MY_ORDERS = storeMyOrders( );
     const STORE_NAVIGATION = storeNavigation( );
+    const STORE_NOTIFICATIONS = storeNotifications( );
 
     const ADDRESS = ref( "Home" );
     const PAYMENT = ref( "COD" );
@@ -333,6 +335,10 @@
 
         // empty my bag
         STORE_BAG.emptyBag( );
+
+        // push notification
+        STORE_NOTIFICATIONS.notifications++;
+        STORE_NOTIFICATIONS.myOrders++;
 
         // navigate
         NAVIGATE( ev.currentTarget );
