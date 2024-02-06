@@ -14,19 +14,17 @@ const storeBag = defineStore( {
 
     actions : {
 
-        addToBag ( order ) {
-
-            this.bag.push( order );
-
-        },
+        addToBag ( order ) { this.bag.push( order ); },
 
         priceUpdate ( id ) {
 
             const ORDER = this.bag.filter( order => order.id === id )[ 0 ];
 
-            ORDER.burger.price = ( ORDER.burger.price * ORDER.burger.quantity);
+            ORDER.burger.price = ORDER.burger.price * ORDER.burger.quantity;
 
-        }
+        },
+
+        emptyBag ( ) { this.bag = [ ]; }
 
     },
 
@@ -42,7 +40,7 @@ const storeBag = defineStore( {
                     
             } );
 
-            return total.toFixed( 2 );
+            return total;
 
         }
 

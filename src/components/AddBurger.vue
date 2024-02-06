@@ -264,6 +264,7 @@
         const ORDER = {
 
             id : Math.floor( Math.random( ) * 999999999 ),
+            
             burger : {
 
                 id : BURGER.id,

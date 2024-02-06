@@ -237,7 +237,7 @@
                     <div class="flex justify-between">
 
                         <span class="font-bold">Sub Total:</span>
-                        <span class="font-bold">${{ STORE_BAG.totalPrice }}</span>
+                        <span class="font-bold">${{ STORE_BAG.totalPrice.toFixed( 2 ) }}</span>
 
                     </div>
 
@@ -261,11 +261,11 @@
                 <div class="flex flex-col">
 
                     <span class="text-gray-500">Grand Total: </span>
-                    <span class="text-xl text-black font-bold">${{ ( parseInt( STORE_BAG.totalPrice ) + 1.50 ).toFixed( 2 ) }}</span>
+                    <span class="text-xl text-black font-bold">${{ ( +STORE_BAG.totalPrice + 1.50 ).toFixed( 2 ) }}</span>
 
                 </div>
 
-                <button class="h-[40px] rounded-lg bg-red-500 px-10 text-white">Place Order</button>
+                <button data-navigation="order-now" data-path="/order-now" @click="PLACE_ORDER" class="h-[40px] rounded-lg bg-red-500 px-10 text-white">Place Order</button>
 
             </div>
 
@@ -300,8 +300,10 @@
     const USE_ROUTE = useRoute( );
 
     // STORE
+    import storeNavigation from "../pinia/store-navigation.js"
     import storeBag from "../pinia/store-bag.js";
     import storeLoyaltyPoints from "../pinia/store-loyalty-points";
+    import storeMyOrders from "../pinia/store-my-orders";
 
     // JSON
     import Burgers from "../json/burgers.json";
@@ -309,16 +311,44 @@
 
     const STORE_BAG = storeBag( );
     const STORE_LOYALTY_POINTS = storeLoyaltyPoints( );
+    const STORE_MY_ORDERS = storeMyOrders( );
+    const STORE_NAVIGATION = storeNavigation( );
 
     const ADDRESS = ref( "Home" );
     const PAYMENT = ref( "COD" );
 
+
+    const PLACE_ORDER = ( ev ) => {
+
+        STORE_MY_ORDERS.newOrder( {
+
+            id : Math.floor( Math.random( ) * 999999 ),
+            subTotal : STORE_BAG.totalPrice,
+            deliveryCharge : 1.50,
+            grandTotal : +STORE_BAG.totalPrice + 1.50,
+
+            content : [ ...STORE_BAG.bag ]
+ 
+        } );
+
+        // empty my bag
+        STORE_BAG.emptyBag( );
+
+        // navigate
+        NAVIGATE( ev.currentTarget );
+
+    };
+
+
+      // NAVIGATE
+    const NAVIGATE = ( el ) => {
+
+        STORE_NAVIGATION.changeActivePath( el.dataset.path );
+        STORE_NAVIGATION.changeActiveNavigation( el.dataset.navigation );
+
+        USE_ROUTER.push( STORE_NAVIGATION.activePath );
+
+    };
+
 </script>
 
-
-<!-- STYLE -->
-<style scoped>
-
-
-
-</style>
